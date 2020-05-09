@@ -1,6 +1,7 @@
 
 """This program plays a game of Rock, Paper, Scissors between two Players,
 and reports both Player's scores each round."""
+import random
 
 moves = ['rock', 'paper', 'scissors']
 
@@ -10,7 +11,7 @@ in this game"""
 
 class Player:
     def move(self):
-        return 'rock'
+        return random.choice(moves)
 
     def learn(self, my_move, their_move):
         pass
@@ -31,6 +32,17 @@ class Game:
         move1 = self.p1.move()
         move2 = self.p2.move()
         print(f"Player 1: {move1}  Player 2: {move2}")
+        self.p1.learn(move1, move2)
+        self.p2.learn(move2, move1)
+
+        if beats(move1 , move2) == True:
+            print(f"This Round  : Player 1 WIN")
+        elif beats(move2 , move1) == True:
+            print(f"This Round  : Player 2 WIN")
+        elif move1 == move2:
+            print("This Round : TIE")
+        else:
+            print("Wrong Input !")
         self.p1.learn(move1, move2)
         self.p2.learn(move2, move1)
 
