@@ -67,21 +67,38 @@ class Game:
     def __init__(self, p1, p2):
         self.p1 = p1
         self.p2 = p2
+        self.p1_score = 0
+        self.p2_score = 0
 
     def play_round(self):
         move1 = self.p1.move()
         move2 = self.p2.move()
-        print(f"Player 1: {move1}  Player 2: {move2}")
+        # print(f"Player 1: {move1}  Player 2: {move2}")
         self.p1.learn(move1, move2)
         self.p2.learn(move2, move1)
 
-        if self.p1.beats(move1 , move2) == True:
-            print(f"This Round  : Player 1 WIN")
-        elif self.p2.beats(move2 , move1) == True:
-            print(f"This Round  : Player 2 WIN")
+        if move1 is not None:
+            print(f"You played {move1}.\nOpponent played {move2}.")
 
-        else:
-            print("** TIE **")
+
+            if self.p1.beats(move1, move2) == True:
+                print("** PLAYER ONE WINS **")
+                # print(f"This Round : Player 1 WIN")
+                self.p1_score += 1
+                print(f"Score: Player One {self.p1_score},"
+                        f"Player Two {self.p2_score}")
+
+            elif self.p2.beats(move2, move1) == True:
+                print("** PLAYER TWO WINS **")
+                # print(f"This Round : Player 2 WIN")
+                self.p2_score += 1
+                print(f"Score: Player One {self.p1_score},"
+                        f"Player Two {self.p2_score}")
+
+            else:
+                print("** TIE **")
+                print(f"Score: Player One {self.p1_score},"
+                        f"Player Two {self.p2_score}")
 
         # elif move1 == move2:
         #     print("This Round : TIE")
