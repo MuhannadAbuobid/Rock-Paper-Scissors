@@ -11,16 +11,16 @@ in this game"""
 
 class Player:
     def move(self):
-        return random.choice(moves)
+        return 'rock'
 
     def learn(self, my_move, their_move):
-        pass
+        self.my_move = my_move
+        self.their_move = their_move
 
-
-def beats(one, two):
-    return ((one == 'rock' and two == 'scissors') or
-            (one == 'scissors' and two == 'paper') or
-            (one == 'paper' and two == 'rock'))
+    def beats(self, one, two):
+        return ((one == 'rock' and two == 'scissors') or
+                (one == 'scissors' and two == 'paper') or
+                (one == 'paper' and two == 'rock'))
 
 # ReflectPlayer class
 class ReflectPlayer(Player):
@@ -44,16 +44,20 @@ class Game:
         self.p1.learn(move1, move2)
         self.p2.learn(move2, move1)
 
-        if beats(move1 , move2) == True:
+        if self.p1.beats(move1 , move2) == True:
             print(f"This Round  : Player 1 WIN")
-        elif beats(move2 , move1) == True:
+        elif self.p2.beats(move2 , move1) == True:
             print(f"This Round  : Player 2 WIN")
-        elif move1 == move2:
-            print("This Round : TIE")
+
         else:
-            print("Wrong Input !")
-        self.p1.learn(move1, move2)
-        self.p2.learn(move2, move1)
+            print("** TIE **")
+
+        # elif move1 == move2:
+        #     print("This Round : TIE")
+        # else:
+        #     print("Wrong Input !")
+        # self.p1.learn(move1, move2)
+        # self.p2.learn(move2, move1)
 
     def play_game(self):
         print("Game start!")
