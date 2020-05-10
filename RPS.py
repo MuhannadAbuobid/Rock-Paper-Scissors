@@ -108,13 +108,14 @@ class Game:
         # self.p2.learn(move2, move1)
 
     def play_game(self):
-        print("Game start!")
+        # print("Game start!")
+        print("Rock Paper Scissors, Go!")
         for round in range(3):
-            print(f"Round {round}:")
+            print(f"\nRound {round} --")
             self.play_round()
-        print("Game over!")
+        # print("Game over!")
 
 
 if __name__ == '__main__':
-    game = Game(HumanPlayer(), CyclePlayer())
+    game = Game(HumanPlayer(), ReflectPlayer())
     game.play_game()
