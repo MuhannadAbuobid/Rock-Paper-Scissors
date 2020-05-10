@@ -40,7 +40,9 @@ class HumanPlayer(Player):
 
 # ReflectPlayer class
 class ReflectPlayer(Player):
-        reflect = "rock"
+        # reflect = "rock"
+        reflect = random.choice(moves)
+
         def move(self):
             return self.reflect
 
@@ -49,7 +51,8 @@ class ReflectPlayer(Player):
 
 
 class CyclePlayer(Player):
-    cycle = 'rock'
+    # cycle = 'rock'
+    cycle =random.choice(moves)
 
     def move(self):
         return self.cycle
