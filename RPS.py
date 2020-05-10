@@ -28,6 +28,16 @@ class RandomPlayer(Player):
         return random.choice(moves)
 
 
+class HumanPlayer(Player):
+    def move(self):
+        request = ""
+
+        while request not in moves:
+            request = input("Rock, paper, scissors? >").lower()
+
+        return request
+
+
 # ReflectPlayer class
 class ReflectPlayer(Player):
         reflect = "rock"
@@ -74,5 +84,5 @@ class Game:
 
 
 if __name__ == '__main__':
-    game = Game(ReflectPlayer(), RandomPlayer())
+    game = Game(HumanPlayer(), RandomPlayer())
     game.play_game()
