@@ -48,6 +48,21 @@ class ReflectPlayer(Player):
             self.reflect = their_move
 
 
+class CyclePlayer(Player):
+    cycle = 'rock'
+
+    def move(self):
+        return self.cycle
+
+    def learn(self, my_move, their_move):
+        if my_move == 'rock':
+            self.cycle = 'paper'
+        elif my_move == 'paper':
+            self.cycle = 'scissors'
+        elif my_move == 'scissors':
+            self.cycle = 'rock'
+
+
 class Game:
     def __init__(self, p1, p2):
         self.p1 = p1
@@ -84,5 +99,5 @@ class Game:
 
 
 if __name__ == '__main__':
-    game = Game(HumanPlayer(), RandomPlayer())
+    game = Game(HumanPlayer(), CyclePlayer())
     game.play_game()
