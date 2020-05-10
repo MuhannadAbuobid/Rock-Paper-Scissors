@@ -22,6 +22,15 @@ def beats(one, two):
             (one == 'scissors' and two == 'paper') or
             (one == 'paper' and two == 'rock'))
 
+# ReflectPlayer class
+class ReflectPlayer(Player):
+        reflect = "rock"
+        def move(self):
+            return self.reflect
+
+        def learn(self, my_move, their_move):
+            self.reflect = their_move
+
 
 class Game:
     def __init__(self, p1, p2):
@@ -55,5 +64,5 @@ class Game:
 
 
 if __name__ == '__main__':
-    game = Game(Player(), Player())
+    game = Game(ReflectPlayer(), Player())
     game.play_game()
