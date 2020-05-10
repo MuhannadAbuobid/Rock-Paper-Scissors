@@ -22,6 +22,12 @@ class Player:
                 (one == 'scissors' and two == 'paper') or
                 (one == 'paper' and two == 'rock'))
 
+
+class RandomPlayer(Player):
+    def move(self):
+        return random.choice(moves)
+
+
 # ReflectPlayer class
 class ReflectPlayer(Player):
         reflect = "rock"
@@ -68,5 +74,5 @@ class Game:
 
 
 if __name__ == '__main__':
-    game = Game(ReflectPlayer(), Player())
+    game = Game(ReflectPlayer(), RandomPlayer())
     game.play_game()
