@@ -44,8 +44,8 @@ This class remembers what move the opponent played last round and plays that mov
 The class will always play 'rock'. That's not a very good playing strategy!
 
 
-Otherwise, if you want to use `RandomPlayer()`, `ReflectPlayers()` or `Player()` as the first argument, you can but
-__don't__ choose `HumanPlayer()` as the second argument.
+Otherwise, you can use `RandomPlayer()`, `ReflectPlayers()` or `Player()` as the `second argument`, but
+__don't__ choose `HumanPlayer()` as the `second argument`.
 
 
 After you save the file. Run the code by using `python3`
