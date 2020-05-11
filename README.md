@@ -20,11 +20,11 @@ game.play_game()
 You have four modes you can choose be changing:
 
 
-Set the program to play a game between `HumanPlayer()` and `RandomPlayer()`.
+* Set the program to play a game between `HumanPlayer()` and `RandomPlayer()`.
 If you want the computer to chose randomly.
 
 
-Or set the program to play a game between `HumanPlayer()` and `CyclePlayer()`.
+* Or set the program to play a game between `HumanPlayer()` and `CyclePlayer()`.
 If you want the computer to choose Cycle moves:
 
 
@@ -36,11 +36,11 @@ rock -> paper -> scissors -> rock ...etc
 ```
 
 
-Or set the program to play a game between `HumanPlayer()` and `ReflectPlayer()`. 
+* Or set the program to play a game between `HumanPlayer()` and `ReflectPlayer()`. 
 This class remembers what move the opponent played last round and plays that move this round. (In other words, if you play 'scissors' on the first round, a ReflectPlayer will play 'scissors' on the next round.)
 
 
-Or, If you chose to set the program to play a game between `HumanPlayer()` and `Player()`.
+* Or, If you chose to set the program to play a game between `HumanPlayer()` and `Player()`.
 The class will always play 'rock'. That's not a very good playing strategy!
 
 
