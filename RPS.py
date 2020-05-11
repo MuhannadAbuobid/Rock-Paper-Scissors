@@ -9,6 +9,7 @@ moves = ['rock', 'paper', 'scissors']
 in this game"""
 
 
+# Main Class "Player"
 class Player:
     def move(self):
         return 'rock'
@@ -23,29 +24,34 @@ class Player:
                 (one == 'paper' and two == 'rock'))
 
 
+# subclasses starting with RandomPlayer
 class RandomPlayer(Player):
     def move(self):
         return random.choice(moves)
 
 
+# HumanPlayer subclass
 class HumanPlayer(Player):
     def move(self):
         request = ""
 
+        # loop till the valid move
         while request not in moves:
             request = input("Rock, paper, scissors? >").lower()
 
         return request
 
 
-# ReflectPlayer class
+# ReflectPlayer subclass
 class ReflectPlayer(Player):
         # reflect = "rock"
         reflect = random.choice(moves)
 
+        # selecting the last move
         def move(self):
             return self.reflect
 
+        # saving the last move
         def learn(self, my_move, their_move):
             self.reflect = their_move
 
@@ -57,6 +63,7 @@ class CyclePlayer(Player):
     def move(self):
         return self.cycle
 
+    # doing cycle you can do it with an array, but its only 3 elements!
     def learn(self, my_move, their_move):
         if my_move == 'rock':
             self.cycle = 'paper'
@@ -67,12 +74,14 @@ class CyclePlayer(Player):
 
 
 class Game:
+    # Initial values and scores
     def __init__(self, p1, p2):
         self.p1 = p1
         self.p2 = p2
         self.p1_score = 0
         self.p2_score = 0
 
+    # Stat new round!
     def play_round(self):
         move1 = self.p1.move()
         move2 = self.p2.move()
@@ -80,44 +89,50 @@ class Game:
         self.p1.learn(move1, move2)
         self.p2.learn(move2, move1)
 
+        # Loop as long as it's not None, no need for more conditionals check
+        # HumanPlayer move method
         if move1 is not None:
             print(f"You played {move1}.\nOpponent played {move2}.")
 
-
+            # Determine the scores using beats method
             if self.p1.beats(move1, move2) == True:
                 print("** PLAYER ONE WINS **")
                 # print(f"This Round : Player 1 WIN")
                 self.p1_score += 1
-                print(f"Score: Player One {self.p1_score},"
+                print(f"Score: Player One {self.p1_score}, "
                         f"Player Two {self.p2_score}")
 
             elif self.p2.beats(move2, move1) == True:
                 print("** PLAYER TWO WINS **")
                 # print(f"This Round : Player 2 WIN")
                 self.p2_score += 1
-                print(f"Score: Player One {self.p1_score},"
+                print(f"Score: Player One {self.p1_score}, "
                         f"Player Two {self.p2_score}")
 
             else:
                 print("** TIE **")
-                print(f"Score: Player One {self.p1_score},"
+                print(f"Score: Player One {self.p1_score}, "
                         f"Player Two {self.p2_score}")
 
-        # elif move1 == move2:
-        #     print("This Round : TIE")
-        # else:
-        #     print("Wrong Input !")
-        # self.p1.learn(move1, move2)
-        # self.p2.learn(move2, move1)
-
+    # Game start point!
     def play_game(self):
         # print("Game start!")
         print("Rock Paper Scissors, Go!")
-        for round in range(3):
+        for round in range(8):
             print(f"\nRound {round} --")
             self.play_round()
         # print("Game over!")
 
+        # Last required thing: At the end of the game, have it print out which
+        # player won, and what the final scores are.
+        if self.p1_score > self.p2_score:
+            print("\nPlayer 1 is the winner ^_^")
+        elif self.p1_score < self.p2_score:
+            print("Player 2 is the winner ^_^")
+        else:
+            print("Its Tie >_<")
+        print(f"Final score: Player One {self.p1_score}, "
+                f"Player Two {self.p2_score}")
 
 if __name__ == '__main__':
     game = Game(HumanPlayer(), ReflectPlayer())
