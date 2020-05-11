@@ -1,4 +1,5 @@
 
+# Editor: Khalid
 """This program plays a game of Rock, Paper, Scissors between two Players,
 and reports both Player's scores each round."""
 import random
@@ -18,6 +19,7 @@ class Player:
         self.my_move = my_move
         self.their_move = their_move
 
+    # Chick Who wins the game
     def beats(self, one, two):
         return ((one == 'rock' and two == 'scissors') or
                 (one == 'scissors' and two == 'paper') or
@@ -44,21 +46,21 @@ class HumanPlayer(Player):
 
 # ReflectPlayer subclass
 class ReflectPlayer(Player):
-        # reflect = "rock"
-        reflect = random.choice(moves)
+    # reflect = "rock"
+    reflect = random.choice(moves)
 
-        # selecting the last move
-        def move(self):
-            return self.reflect
+    # selecting the last move
+    def move(self):
+        return self.reflect
 
-        # saving the last move
-        def learn(self, my_move, their_move):
-            self.reflect = their_move
+    # saving the last move
+    def learn(self, my_move, their_move):
+        self.reflect = their_move
 
 
 class CyclePlayer(Player):
     # cycle = 'rock'
-    cycle =random.choice(moves)
+    cycle = random.choice(moves)
 
     def move(self):
         return self.cycle
@@ -95,24 +97,24 @@ class Game:
             print(f"You played {move1}.\nOpponent played {move2}.")
 
             # Determine the scores using beats method
-            if self.p1.beats(move1, move2) == True:
+            if self.p1.beats(move1, move2):  # or is True
                 print("** PLAYER ONE WINS **")
                 # print(f"This Round : Player 1 WIN")
                 self.p1_score += 1
                 print(f"Score: Player One {self.p1_score}, "
-                        f"Player Two {self.p2_score}")
+                      f"Player Two {self.p2_score}")
 
-            elif self.p2.beats(move2, move1) == True:
+            elif self.p2.beats(move2, move1):  # or is True
                 print("** PLAYER TWO WINS **")
                 # print(f"This Round : Player 2 WIN")
                 self.p2_score += 1
                 print(f"Score: Player One {self.p1_score}, "
-                        f"Player Two {self.p2_score}")
+                      f"Player Two {self.p2_score}")
 
             else:
                 print("** TIE **")
                 print(f"Score: Player One {self.p1_score}, "
-                        f"Player Two {self.p2_score}")
+                      f"Player Two {self.p2_score}")
 
     # Game start point!
     def play_game(self):
@@ -132,8 +134,14 @@ class Game:
         else:
             print("Its Tie >_<")
         print(f"Final score: Player One {self.p1_score}, "
-                f"Player Two {self.p2_score}")
+              f"Player Two {self.p2_score}")
 
+
+# Main
 if __name__ == '__main__':
     game = Game(HumanPlayer(), ReflectPlayer())
     game.play_game()
+
+
+# pycodestyle RPS.py 100% done!
+# End! clone on May 10, 2020
