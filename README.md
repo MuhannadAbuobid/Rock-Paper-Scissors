@@ -50,7 +50,7 @@ __don't__ choose `HumanPlayer()` as the `second argument`.
 
 After you save the file. Run the code by using `python3`
 ```shell
-python3 RPS.py
+$ python3 RPS.py
 ```
 To start playing, 
 ENJOY ^_^
