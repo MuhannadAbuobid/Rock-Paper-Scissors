@@ -17,7 +17,7 @@ game.play_game()
 ```
 
 
-You have four modes you can choose be changing:
+You have four modes you can choose:
 
 
 * Set the program to play a game between `HumanPlayer()` and `RandomPlayer()`.
@@ -48,7 +48,7 @@ Otherwise, you can use `RandomPlayer()`, `ReflectPlayers()` or `Player()` as the
 __don't__ choose `HumanPlayer()` as the `second argument`.
 
 
-After you save the file. Run the code by using `python3`
+After you save the file. Run the code by using `python3` make sure you have the updated one if you don't have it install it from [here](https://www.python.org/downloads/)
 ```shell
 $ python3 RPS.py
 ```
